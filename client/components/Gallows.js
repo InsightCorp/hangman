@@ -14,33 +14,13 @@ export default class Gallows extends React.Component {
 					<g id="gallowRope">
 						<line id="rope" x1="100" y1="0" x2="100" y2="165" />
 						<line id="rope2" x1="100" y1="0" x2="100" y2="165" >
-	
-				  		 <animate id="myLoop"
-				         begin="0s;myLoop.end"
-				         attributeType="XML"
-						 attributeName="x2"
-						 from="100"
-						 to="140"
-						 dur="1s"
-						 repeatCount="3" />
+			 			<animate attributeName="x2"
+		                 attributeType="XML"
+		                 dur="3s"
+		                 values="100 ; 140 ; 60 ; 140 ; 100"
+		                 keyTimes="0 ; 0.25 ; 0.5 ; 0.75 ; 1"
+		                 repeatCount="indefinite"/>
 
-						<set begin="myLoop.begin"
-						     attributeType="XML"
-						     attributeName="x2"
-						     from="140"
-						     to="60" />
-						
-						<set begin="myLoop.repeat(1)"
-						     attributeType="XML"
-						     attributeName="x2"
-						     from="60"
-						     to="140" />
-						
-						<set begin="myLoop.repeat(2)"
-						     attributeType="XML"
-						     attributeName="x2"
-						     from="140"
-						     to="100" />
 						</line>
 						<circle id="nuse" cx="100" cy="175" r="16" />
 					</g>

@@ -102,7 +102,7 @@ export default class Room extends React.Component {
 			console.log("lose!", res)
 			this.outcome.win = false;
 			this.outcome.player = res.playerId;
-			this.runAnimation(2);
+			this.runAnimation("train");
 			this.setEndGameState(res.gameState, res.timeUntilNextGame)
 
 		})
@@ -131,7 +131,7 @@ export default class Room extends React.Component {
 	}
 
 	runAnimation(choice){
-		if(choice){
+		if(choice === "train"){
 			setTimeout(function(){
 				document.getElementById("train").style.display = "none";
 				document.getElementById("gallowMan").style.display = "block";
