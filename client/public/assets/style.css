@@ -205,9 +205,14 @@ h1.game-title {
         left: 150%;
     }
 }
+
 #rope2 {
     display:none;
 }
+#head {
+    display: none;
+}
+
 img#train{
     position: fixed;
     animation: moveTrain 2s;

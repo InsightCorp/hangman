@@ -9,7 +9,7 @@ export default class Gallows extends React.Component {
 	render() {
 		return(
 			<div className="gallows">
-				<svg width="200" height="500" >
+				<svg width="200" height="800" >
 					
 					<g id="gallowRope">
 						<line id="rope" x1="100" y1="0" x2="100" y2="165" />
@@ -28,6 +28,16 @@ export default class Gallows extends React.Component {
 						<circle id="noggin" 
 							className={this.props.remainingGuesses < 6 ? "op-on" : "op-off"}
 							cx="100" cy="158" r="30" />
+						<circle id="head" 
+							className={this.props.remainingGuesses < 6 ? "op-on" : "op-off"}
+							cx="100" cy="158" r="30">
+							<animate attributeName="cy"
+			                 attributeType="XML"
+			                 dur="3s"
+			                 values="158 ; 400 ; 800"
+			                 keyTimes="0 ; 0.5; 1"
+			                 repeatCount="indefinite"/>
+							</circle>
 						<line id="torso" 
 							className={this.props.remainingGuesses < 5 ? "op-on" : "op-off"}
 							x1="100" y1="193" x2="100" y2="290" />
