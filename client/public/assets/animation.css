@@ -22,7 +22,11 @@
 * {margin: 0; padding: 0;}
 .container{
   position: fixed;
-  z-index: 2;
+  z-index: 12;
+}
+.navbar navbar-default navbar-static-top {
+  position: fixed;
+  z-index: 12;
 }
 .room{
   position: fixed;
@@ -30,24 +34,34 @@
 canvas {
   display: block;
 }
-
+.canvas{
+  position: fixed;
+  z-index: 10; 
+}
+.dropMenu{
+  position: fixed;
+  z-index: 100; 
+}
 #snowy {
   position: fixed;
   z-index: 0;
   background-image: url("http://dbclipart.com/wp-content/uploads/2016/03/Mountain-clip-art-free-download-free-clipart-images-2-2.png");
-  background-position: center; 
+  background-position: center;
+  background-size:cover;
 }
 #desert {
   position: fixed;
   z-index: 0;
-  background-image: url("https://0.s3.envato.com/files/129486789/22.png");
-  background-position: center; 
+  background-image: url("https://www.mylittlewallpaper.com/images/o_4f37dc6f54ca23.21452125.png");
+  background-position: center;
+  background-size:cover;
 }
 #sea {
   position: fixed;
   z-index: 0;
   background-image: url("http://www.publicdomainpictures.net/pictures/30000/velka/underwater-treasures.jpg");
-  background-position: center; 
+  background-position: center;
+  background-size:cover; 
 }
 .alphabets-inactive{
 	background: red
