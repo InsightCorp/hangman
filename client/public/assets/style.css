@@ -163,6 +163,11 @@ h1.game-title {
     padding-top: 25px;
 }
 
+/*the win or lose msg*/
+#outcome {
+    display: none;
+}
+
 
 @-webkit-keyframes move
 {
@@ -206,7 +211,7 @@ h1.game-title {
 img#train{
     position: fixed;
     animation: moveTrain 2s;
-    top:200px;
+    top:260px;
     display: none;
 }
 

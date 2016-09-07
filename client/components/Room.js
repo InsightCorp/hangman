@@ -136,6 +136,7 @@ export default class Room extends React.Component {
 				document.getElementById("train").style.display = "none";
 				document.getElementById("gallowMan").style.display = "block";
 			},2000)
+			document.getElementById("outcome").style.display = "block";
 			document.getElementById("train").style.display = "block";
 			setTimeout(function () {
 				document.getElementById("gallowMan").style.display = "none";	
@@ -147,14 +148,17 @@ export default class Room extends React.Component {
 				document.getElementById("nuse").style.display = "block";
 				document.getElementById("rope2").style.display = "none";
 				document.getElementById("rope").style.display = "block";
+				document.getElementById("outcome").style.display = "none";
 			},2000)
 		}else{
 			setTimeout(function(){
 				document.getElementById("unicorn").style.display = "none";
 				document.getElementById("gallowMan").style.display = "block";
+				document.getElementById("outcome").style.display = "none";
 			},3000)
 			document.getElementById("unicorn").style.display = "block";
 			document.getElementById("gallowMan").style.display = "none";
+			document.getElementById("outcome").style.display = "block";
 		}
 	}
 

@@ -38,33 +38,8 @@ export default class Outcome extends React.Component {
 	var timeLeft = (this.props.timeUntilNextGame - (new Date()).getTime())/1000;
 	this.state.show = this.props.show && (timeLeft >0);
 	return ( 
-	  <div className = "outcome">
-	    	<Modal show={this.state.show} onHide={this.close}>
-				<Modal.Header closeButton>
-					<Modal.Title>{this.props.outcome.win?"WIN :D":"LOSE :("}</Modal.Title>
-				</Modal.Header>
-				<Modal.Body>
-					{this.props.outcome.win?"WINNER IS ":"LOSER IS "}
-					{this.props.outcome.player.slice(10)}
-					<br/>
-
-					<span> NEXT GAME IN:  </span>
-					{
-						//<p>The word was <strong>#######</strong></p> 
-					}
-					<span> 
-					{
-					timeLeft.toPrecision(2)
-					}
-					</span>
-					<span> SECS</span>
-
-				</Modal.Body>
-				<Modal.Footer>
-
-					<Button onClick={this.close.bind(this)}>Play Again</Button>
-				</Modal.Footer>
-	    	</Modal>
+	  <div id="outcome">
+			<h1>{this.props.outcome.win?"WIN :D":"LOSE :("}	</h1>
 	  </div>
 	)
 	}
