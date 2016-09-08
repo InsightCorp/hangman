@@ -246,3 +246,9 @@ h1, h2, h3 {
 .room {
     width:100%;
 }
+.hintPicture{
+    position: absolute;
+    top: 100px;
+    width: 260px;
+    left: -118px;
+}

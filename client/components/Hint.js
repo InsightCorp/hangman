@@ -31,7 +31,7 @@ export default class Hint extends React.Component {
 	render() {
 		return ( 
 			<div className = "hint"> 
-				<button onClick={this._onButtonClick}>Hint?</button>
+				<button className="btn btn-lg btn-danger" onClick={this._onButtonClick}> Hint ? </button>
 				{this.state.showComponent ?
 					<ShowPicture hintPicUrl={this.props.hintPicUrl} /> : null
 				}
