@@ -23,7 +23,9 @@ app.get('/bundle.js',
 );
 
 // Wire up SingleRoomServer
-io.on('connection', singleRoomServer(io) );
+console.log('About to call singleroomserver');
+io.on('connection', singleRoomServer(io));
+console.log('After call to singleroomserver');
 
 // If not in test environment start server
 if (process.env.NODE_ENV !== 'test') {

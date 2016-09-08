@@ -18,9 +18,10 @@ export default class Room extends React.Component {
     		remainingGuesses: 6,
     		isDone: false,
 			players:[],
+			coolDown:0,
+			timeUntilNextGame: 0,
 			background: "snowy",
-			coolDown:0
-
+			hintPic:''
 		};
 		this.playerId = ""
 		this.outcome = {
@@ -43,6 +44,14 @@ export default class Room extends React.Component {
 	    		'remainingGuesses': res.gameState.remainingGuesses,
 	    		'isDone': res.gameState.isDone
 			});
+		})
+
+
+		this.serverAPI.getImageUrl((hintPic)=>{
+			console.log("hintPic url", hintPic.url);
+			this.setState({
+				hintPic: hintPic.url
+			})
 		})
 
 		// Update players
@@ -228,6 +237,7 @@ export default class Room extends React.Component {
 								remainingGuesses={this.state.remainingGuesses} 
 								serverAPI = {this.serverAPI}
 								coolDown = {this.state.coolDown}
+								hintPicUrl = {this.state.hintPic} 
 								/>
 						</div>
 						<div className="col-xs-3 col-sm-2" id="gallows-col">

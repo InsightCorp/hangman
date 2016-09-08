@@ -1,6 +1,8 @@
+var Bing = require('./bingAPI.js');
+
 var HangmanGame = {};
 
-HangmanGame.create = function( solution ) {
+HangmanGame.create = function( solution) {
   var splitSolution = solution.toLowerCase().split('');
   var word = Array(solution.length).fill(null);
   var guessedLetters = [];

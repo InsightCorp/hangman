@@ -17,5 +17,4 @@ module.exports = function (io, game) {
   });
 
   io.emit('startGame', game.getState() );
-
 }

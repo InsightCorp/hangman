@@ -53,4 +53,5 @@ module.exports = function (io, wordGenerator, restartDelay) {
     // Server has only one room so add all Players
     controller[controller.length-1].join(player);
   };
+
 }

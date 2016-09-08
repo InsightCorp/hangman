@@ -5,6 +5,7 @@ import Gallows from './Gallows.js';
 import GuessedLetters from './GuessedLetters.js';
 import RemainingGuess from './RemainingGuess.js';
 import Word from './Word.js';
+import Hint from './Hint.js';
 
 export default class GameBoard extends React.Component {
 
@@ -38,6 +39,7 @@ export default class GameBoard extends React.Component {
 								coolDown = {this.props.coolDown}
 								serverAPI={this.props.serverAPI} />
 						</div>
+						<Hint hintPicUrl={this.props.hintPicUrl}/>
 					</div>
 		)
 	}

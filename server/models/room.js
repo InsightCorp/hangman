@@ -41,6 +41,7 @@ Room.create = function () {
     },
     newGame: function (solution) {
       room.resetCooldowns();
+      console.log('solution in newGame->room.js',solution);
       game = Game.create(solution);
     },
     guessLetter: function (player, letter) {

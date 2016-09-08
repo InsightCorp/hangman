@@ -1,12 +1,15 @@
 // Automatically join the room on connection
 var Room = require('../models/room.js');
+var Bing = require('../models/bingAPI.js');
 
 var RoomController = {};
 
 RoomController.create = function (io) {
+  console.log('I am in RoomController.create');
   var room = Room.create();
   console.log("roomid", room.getId());
   var restartDelay = 30000;
+  var imageUrl = null;
 
   // wordGenerator is used to create new Games, should be set in setWordGenerator
   var wordGenerator = function () {
@@ -15,8 +18,13 @@ RoomController.create = function (io) {
 
   // Setup Controller's Public API
   var controller = {
-    newGame: function (solution) {
-      room.newGame( solution !== undefined ? solution : wordGenerator() );
+    newGame: function (solution, cb) {
+      var word = solution !== undefined ? solution : wordGenerator();
+      Bing.getImage(word, function(url){
+        io.in(room.getId()).emit('getImageUrl', { url: url });
+        console.log('url: ',url)
+      });
+      room.newGame(word);
     },
     setWordGenerator: function (fn) {
       wordGenerator = fn;
@@ -51,7 +59,7 @@ RoomController.create = function (io) {
           return player.getId();
         })
       });
-
+      
       socket.broadcast.to(room.getId())
         .emit('playerEnterRoom', { playerId: player.getId() });
 
