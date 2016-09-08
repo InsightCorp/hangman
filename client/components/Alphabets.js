@@ -2,12 +2,21 @@ import React from 'react';
 //import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Alphabet from './alphabet'
 import CoolDown from './cooldown'
+import keycode from 'keycode';
 
 export default class Alphabets extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+	}
+
+	componentDidMount(){
+		document.addEventListener('keyup', (e) => {
+		  console.log("You pressed", keycode(e))
+		  this.props.serverAPI.makeGuess(keycode(e));
+		})
+
 	}
 
 	render() {

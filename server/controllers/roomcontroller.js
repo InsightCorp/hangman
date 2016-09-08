@@ -44,7 +44,8 @@ RoomController.create = function (io) {
           // Leave our Room model
           room.leave(socket.id);
           // Broadcast a playerLeaveRoom event to other sockets
-          io.in(room.getId()).emit('playerLeaveRoom', { playerId: player.getId() });
+          console.log("player left:", room.getId(), "player id:",player.getId())
+          io.in(room.getId()).emit('playerLeaveRoom', { playerId: player.getId(), roomId:room.getId()});
       });
 
       socket.on('guessLetter', function (data) {
@@ -57,11 +58,12 @@ RoomController.create = function (io) {
         gameState: room.getGame().getState(),
         players: room.getPlayers().map(function (player) {
           return player.getId();
-        })
+        }),
+        roomId: room.getId()
       });
       
       socket.broadcast.to(room.getId())
-        .emit('playerEnterRoom', { playerId: player.getId() });
+        .emit('playerEnterRoom', { playerId: player.getId(), roomId:room.getId() });
 
     }
   }
@@ -87,7 +89,7 @@ RoomController.create = function (io) {
     setTimeout(function () {
       controller.newGame();
       io.emit('startGame', {
-        gameState: room.getGame().getState(),
+        gameState: room.getGame().getState(), 
       });
     }, restartDelay);
   }

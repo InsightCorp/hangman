@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default class Alphabet extends React.Component {
 
 	constructor(props) {
@@ -18,6 +19,7 @@ export default class Alphabet extends React.Component {
 	}
 
 	render() {
+		console.log('it works')
 		return ( 
 			< div className = {this.isActive()} onClick = {(e)=>{this.onAlphabetClick(e)}}> 
 				{ this.props.alphabet} 

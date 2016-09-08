@@ -5,7 +5,12 @@ export default class ServerAPI {
   // creates a socket.io-client connection
   constructor(port) {
     this.port = port;
-    this.client = null;
+    this.client = 
+    {handshake :
+      {headers: 
+        {cookie :document.cookie}
+      }
+    }
   }
 
   disconnect() {

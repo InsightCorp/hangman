@@ -26,29 +26,44 @@ var randomWords = require('random-words');
 module.exports = function (io, wordGenerator, restartDelay) {
   // Create RoomController to manage Room and Game
   var controller = [];
+  if (wordGenerator === undefined) {
+  // Configure RoomController to use a random word for each new Game
+    wordGenerator = function () {
+      return randomWords(1)[0];
+    };
+  }
+  if (restartDelay === undefined) {
+  // Initialize RoomController to restart games after a 30 second delay
+    restartDelay = 2000;
+  }
+  // Configure controller with above options
 
   return function onConnectionHandler (socket) {
-    // Treat each new connection as a new Player
-    controller.push(RoomController.create(io));
-    if (wordGenerator === undefined) {
-    // Configure RoomController to use a random word for each new Game
-      wordGenerator = function () {
-        return randomWords(1)[0];
-      };
-    }
-    if (restartDelay === undefined) {
-    // Initialize RoomController to restart games after a 30 second delay
-      restartDelay = 2000;
-    }
-    // Configure controller with above options
-    controller[controller.length-1].setWordGenerator(wordGenerator);
-    controller[controller.length-1].setRestartDelay(restartDelay);
-    controller[controller.length-1].newGame();
+    var cookieRoomId = 'nothing';
+    if (socket.handshake.headers.cookie)
+      cookieRoomId = socket.handshake.headers.cookie.substr(socket.handshake.headers.cookie.indexOf("roomId")+7);
+  var savedIndex = -1;
+  for(var index=0; index<controller.length; index++){
+    console.log(controller[index].getRoom().getId(), "and ", cookieRoomId)
+    if(controller[index].getRoom().getId() === cookieRoomId) {
+      console.log("found room!", index)
+      savedIndex = index;
+    } 
+  }
+  // Treat each new connection as a new Player
+  if(savedIndex == -1){
+  controller.push(RoomController.create(io));
+  controller[controller.length-1].setWordGenerator(wordGenerator);
+  controller[controller.length-1].setRestartDelay(restartDelay);
+  controller[controller.length-1].newGame();
+  savedIndex = controller.length-1;
+  console.log("new room!");
   // Return our connection handler
-  console.log("controller array length", controller.length)
-    var player = Player.create(socket);
-    // Server has only one room so add all Players
-    controller[controller.length-1].join(player);
+  }
+  var player = Player.create(socket);
+  console.log("index before controller,", savedIndex)
+  // Server has only one room so add all Players
+  controller[savedIndex].join(player);
   };
 
 }
