@@ -200,7 +200,7 @@ export default class Room extends React.Component {
 				<nav className="navbar navbar-default navbar-static-top">
 
 				  <div className="container navcon">
-				    <h1 className="game-title">HANGMAN</h1>
+				    <h1 className="game-title">HANGMAN 2000</h1>
 				  <select name="select" className="dropMenu"
 				     onChange = {(e) => {
 				    	this.state.background = e.target.value;
@@ -219,7 +219,7 @@ export default class Room extends React.Component {
 					/>
 					<div className="row">
 						<div className="col-xs-12 col-sm-2" id="player-col">
-							<Players players={this.state.players}/>
+							
 						</div>	
 						<div className="col-xs-9 col-sm-8" id="board-col">
 							<GameBoard 

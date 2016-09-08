@@ -41,6 +41,8 @@ canvas {
 .dropMenu{
   position: fixed;
   z-index: 100; 
+  top: 15px;
+  right: 20px;
 }
 #snowy {
   position: fixed;
