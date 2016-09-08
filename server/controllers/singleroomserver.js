@@ -61,7 +61,7 @@ module.exports = function (io, wordGenerator, restartDelay) {
       restartDelay = 2000;
     }
     // Configure controller with above options
-    controller[controller.length-1].setWordGenerator(wordGenerator);
+    controller[controller.length-1].setWordGenerator(complexWordGenerator);
     controller[controller.length-1].setRestartDelay(restartDelay);
     controller[controller.length-1].newGame();
   // Return our connection handler
