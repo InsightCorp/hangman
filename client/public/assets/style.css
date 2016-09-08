@@ -238,7 +238,10 @@ img#unicorn {
    display: none;
 }
 
-
 h1, h2, h3 {
     margin-top: 10px;
-    }
+}
+
+.room {
+    width:100%;
+}
