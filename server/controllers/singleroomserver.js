@@ -10,6 +10,7 @@
 var Player = require('../models/player.js');
 var RoomController = require('./roomcontroller.js');
 var randomWords = require('random-words');
+var rcw = require('../models/randomComplexWords.js');
 // Simple server for socket.io on 'connection' events
 // Server will:
 // 1.) Create a new RoomController
@@ -29,7 +30,8 @@ module.exports = function (io, wordGenerator, restartDelay) {
   if (wordGenerator === undefined) {
   // Configure RoomController to use a random word for each new Game
     wordGenerator = function () {
-      return randomWords(1)[0];
+      //return randomWords(1)[0];
+      return rcw.randomComplexWord();
     };
   }
   if (restartDelay === undefined) {
