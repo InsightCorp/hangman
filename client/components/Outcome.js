@@ -39,7 +39,7 @@ export default class Outcome extends React.Component {
 	this.state.show = this.props.show && (timeLeft >0);
 	return ( 
 	  <div id="outcome">
-			<h1>{this.props.outcome.win?"WIN :D":"LOSE :("}	</h1>
+			<h1>{this.props.outcome.win?"WIN :D":"YOU, LOSE :("}	</h1>
 	  </div>
 	)
 	}

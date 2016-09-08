@@ -13,7 +13,7 @@ div {
 }
 
 .container {
-    max-width: 1050px;
+    max-width: 1600px;
 }
 
 .room{
@@ -111,6 +111,12 @@ div {
     border-radius: .3rem;
     outline: 0;
     opacity: 1;
+
+}
+#outcome{
+    background-image: url("http://wallpapercave.com/wp/6UGe1vL.png");
+    background-position: center;
+    background-size:cover;
 }
 
 .gallows{
@@ -231,3 +237,8 @@ img#train{
 img#unicorn {
    display: none;
 }
+
+
+h1, h2, h3 {
+    margin-top: 10px;
+    }

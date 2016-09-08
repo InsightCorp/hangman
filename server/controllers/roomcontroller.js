@@ -5,6 +5,7 @@ var RoomController = {};
 
 RoomController.create = function (io) {
   var room = Room.create();
+  console.log("roomid", room.getId());
   var restartDelay = 30000;
 
   // wordGenerator is used to create new Games, should be set in setWordGenerator
